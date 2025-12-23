@@ -1,0 +1,190 @@
+/* dashboard.css */
+
+/* Main content area for the dashboard */
+.main-content {
+    padding: 30px; /* Increased padding for more breathing room */
+    flex-grow: 1; /* Ensures it takes up available space next to the sidebar */
+    background-color: #f8f9fa; /* Lighter background for the content area */
+}
+
+/* Dashboard Heading */
+.main-content h1 {
+    font-size: 2.2em; /* Slightly larger heading */
+    color: #343a40; /* Darker, more prominent color */
+    margin-bottom: 25px; /* More space below the main heading */
+    text-align: left; /* Align heading to the left */
+    border-bottom: 2px solid #e9ecef; /* Subtle separator */
+    padding-bottom: 15px;
+}
+
+/* Summary Cards Section */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid for cards */
+    gap: 20px; /* Space between cards */
+    margin-bottom: 30px; /* Space before the next section */
+}
+
+/* Individual Card Styles */
+.card {
+    background-color: #ffffff;
+    border-radius: 12px; /* More pronounced rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Softer, more depth */
+    padding: 25px; /* Increased padding */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    display: flex; /* Use flex for internal alignment */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px; /* Ensure a minimum height for consistency */
+}
+
+.card:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.card h2 {
+    font-size: 1.25em; /* Slightly larger card titles */
+    color: #495057; /* Subtler title color */
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card .value {
+    font-size: 2.5em; /* Larger, more impactful value */
+    font-weight: bold;
+    color: #007bff; /* Primary blue for key values */
+    margin-top: 10px;
+}
+
+/* Low Stock Card Specifics */
+.card.clickable {
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.card.clickable .value {
+    color: #dc3545; /* Red for low stock for emphasis */
+}
+
+/* Chart Container Styles */
+.chart-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 30px; /* Space between chart sections */
+    position: relative; /* For responsiveness of canvas */
+    height: 450px; /* Fixed height for consistent chart size, adjust as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center chart vertically */
+}
+
+.chart-container h2 {
+    font-size: 1.5em;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 400px; /* Ensure chart doesn't exceed container */
+}
+
+/* Low Stock Detail Card (List) */
+.low-stock-detail-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.low-stock-detail-card h2 {
+    font-size: 1.5em;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#lowStockList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#lowStockList li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee; /* Separator for list items */
+    color: #555;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#lowStockList li:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+#lowStockList li strong {
+    color: #333;
+    font-weight: 600;
+}
+
+#lowStockList li span {
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Responsive Adjustments (from home.css, ensuring consistency) */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+        margin-bottom: 75px; /* Adjust for fixed bottom sidebar */
+    }
+
+    .main-content h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .summary-cards {
+        grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+    }
+
+    .card {
+        padding: 20px;
+        min-height: 120px;
+    }
+
+    .card h2 {
+        font-size: 1.1em;
+    }
+
+    .card .value {
+        font-size: 2em;
+    }
+
+    .chart-container {
+        height: 350px; /* Adjust height for smaller screens */
+        padding: 20px;
+    }
+
+    .chart-container h2 {
+        font-size: 1.3em;
+    }
+
+    .low-stock-detail-card {
+        padding: 20px;
+    }
+
+    #lowStockList li {
+        font-size: 1em;
+        padding: 10px 0;
+    }
+}

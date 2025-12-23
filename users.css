@@ -1,0 +1,183 @@
+h1.section_header {
+    font-size: 21px; /* Added px unit */
+    color: #f685a1;
+    border-bottom: 1px solid #ffd7e1;
+    padding: 10px;
+    border-left: 4px solid #f690bf;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+table, th, td {
+    border: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
+}
+
+td {
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #fdfdfd;
+}
+
+tr:hover {
+    background-color: #eeeeee;
+    transition: background 0.2s ease;
+}
+
+
+.userCount{
+    text-align: right;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color:#f685a1;
+}
+
+.main h3 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.main p {
+  font-size: 14px;
+  text-align: center;
+}
+
+.add-button {
+    background-color: #a93131; /* Green add button */
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none; /* For anchor tag styling */
+    display: block;
+    margin: 0 auto;
+}
+
+.add-button:hover {
+    background: linear-gradient(to left, #a93131, #151515);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* darken effect */
+    display: none; /* hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#userAddFormContainer {
+    background: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.appForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.appFormInputContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.appFormInputContainer label {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.appFormInput {
+    padding: 8px 10px;
+    font-size: 13px;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+    background-color: #fdfdfd;
+    transition: border 0.2s ease;
+}
+
+.appFormInput:focus {
+    border-color: #999;
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for the container div */
+.responseMessage {
+  border: 1px solid #ccc; /* Add a subtle border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 20px auto; /* Center the div horizontally */
+  padding: 20px; /* Add padding for spacing */
+  max-width: 600px; /* Limit the width for better responsiveness */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  text-align: center; /* Center text within the div */
+}
+
+/* Styles for the paragraph within the container */
+.responseMessage p {
+  font-size: 18px;
+  margin: 0; /* Remove default paragraph margins */
+  line-height: 1.5; /* Adjust line spacing */
+}
+
+/* Styles for success messages */
+.responseMessage_success {
+  background-color: rgba(0, 128, 0, 0.1); /* Light green background */
+  color: #3c763d; /* Dark green text */
+}
+
+/* Styles for error messages */
+.responseMessage_error {
+  background-color: rgba(255, 0, 0, 0.1); /* Light red background */
+  color: #a94442; /* Dark red text */
+}

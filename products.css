@@ -1,0 +1,267 @@
+.page {
+    flex: 1;
+    background-color: #f9f9f9;
+    display: flex;
+}
+
+
+.product-detail-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 2rem;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    margin: 0 auto;
+    max-width: 600px;
+    max-height: fit-content;
+}
+
+.product-detail-image {
+    flex: 1 1 300px; /* Allow image to grow/shrink, min-width 300px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 30%; /* Limit image height */
+}
+
+.product-detail-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-detail-info {
+    flex: 2 1 400px; /* Allow info to grow/shrink, min-width 400px */
+}
+
+.product-detail-info h1 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.product-detail-info p {
+    font-size: 12px;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.product-detail-info strong {
+    color: #555;
+    display: inline-block;
+    min-width: 150px; /* Align labels */
+}
+
+.product-detail-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #a93131;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.edit-button {
+    background-color: #ffa53c;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.edit-button:hover {
+    background: linear-gradient(to left, #ffa53c, #151515);
+}
+
+.delete-button {
+    background-color: #a93131;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.delete-button:hover {
+    background: linear-gradient(to left, #a93131, #151515);
+}
+
+.add-button {
+    background-color: #a93131; /* Green add button */
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block; 
+    margin-bottom: 1rem;
+}
+
+.add-button:hover {
+    background: linear-gradient(to left, #a93131, #151515);
+}
+
+
+td ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+td ul li {
+    margin-bottom: 0.5em; /* Add some spacing between list items */
+}
+
+td { /* Style the table cell itself */
+    padding: 0.5em; /* Add padding around the content */
+}
+
+/* Style for the "No suppliers" text */
+td:empty { /* or td:before if you need to style even when there's a space */
+    text-align: center; /* Center the text */
+    color: #888; /* Make it a lighter grey */
+    font-style: italic;
+}
+.supplier-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.supplier-list li {
+    margin-bottom: 0.5em;
+}
+
+.no-suppliers {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
+.product-grid {
+    display: grid;
+    /* Responsive grid: auto-fill available space with min 180px, max 1fr */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem; /* Space between grid items */
+    padding: 2rem; /* Padding around the grid */
+    max-width: 1200px; /* Max width for the grid */
+    margin: 0 auto; /* Center the grid on the page */
+    margin-top: 2rem; /* Add some space above the grid */
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden;
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* Subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column; /* Stack image and info vertically */
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
+}
+
+.product-wrapper {
+    position: relative; /* For absolute positioning of the label */
+}
+
+.product-img {
+    height: 160px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f8f8; /* Light background for image area */
+    border-bottom: 1px solid #eee; /* Separator for image and info */
+}
+
+.product-img img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Ensure image fits without cropping */
+    display: block; /* Remove extra space below image */
+}
+
+.product-info {
+    padding: 1rem;
+    flex-grow: 1; /* Allow info section to grow and fill space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push price to bottom */
+}
+
+.product-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    height: 38px; /* Fixed height for consistent layout */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+    display: -webkit-box; /* For multi-line ellipsis */
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+}
+
+.product-price {
+    color: #a93131;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 0.5rem; /* Space above price */
+}
+
+.product-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #a93131; 
+    color: #fff;
+    padding: 4px 8px; /* Slightly larger padding */
+    font-size: 11px;
+    border-radius: 4px; /* Slightly more rounded corners */
+    font-weight: bold;
+    z-index: 10; /* Ensure label is above image */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Smaller cards on mobile */
+        padding: 1rem;
+    }
+    .product-img {
+        height: 80px; /* Smaller image height on mobile */
+    }
+    .product-name {
+        font-size: 13px;
+        height: 36px;
+    }
+    .product-price {
+        font-size: 15px;
+    }
+}
