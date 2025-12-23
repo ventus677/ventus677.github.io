@@ -1,0 +1,607 @@
+/* --- Global Reset & Utilities --- */
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.section-subtitle {
+    color: #666;
+    margin-top: -10px;
+    font-size: 0.95em;
+}
+
+/* --- 1. Hero Section Styling (Full-Width Background) --- */
+.hero-section {
+    padding: 50px 80px; 
+    margin-bottom: 0px;
+    margin-top: -10px;
+    background-image: url('../images/heroImage.png'); 
+    background-size: cover; /* Image scales to cover the entire section */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; 
+    filter: drop-shadow(0px 1px 5px #151515);
+    min-height: 320px; 
+    color: #fff; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
+}
+
+.hero-content {
+    max-width: 70%; /* Keep content contained to the left */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.hero-tag {
+    font-size: max(12px, min(18px, 1.5vw));
+    font-weight: 500;
+    color: #ddd; /* Light color for the tag line */
+    margin-bottom: 5px;
+}
+
+.hero-section h1 {
+    font-size: max(32px, min(44px, 2.5vw));
+    margin: 0 0 15px 0;
+    font-weight: 800;
+}
+
+.hero-description {
+    font-size: max(12px, min(16px, 1.5vw));
+    color: #f0f0f0;
+    margin-bottom: 25px;
+    max-width: 80%;
+}
+
+.hero-buttons .btn {
+    font-size: max(10px, min(18px, 1.5vw));
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.hero-buttons .btn-primary {
+    background-color: #a93131; /* White background for primary button */
+    color: #fafafa;
+    border: 1px solid #fafafa;
+}
+
+.hero-buttons .btn-secondary {
+    background-color: transparent; /* Transparent background for secondary button */
+    color: white;
+    border: 1px solid white;
+}
+
+.category-name-label {
+    padding-top: 20px;
+    color: #a93131;
+    font-weight: 700;
+    font-size: max(14px, min(20px, 1.5vw));
+}
+
+
+/* --- CORE LAYOUT & STRUCTURE (category-carousel-section) --- */
+
+/* --- CORE LAYOUT & STRUCTURE (category-carousel-section) --- */
+
+.carousel-wrapper {
+    overflow: hidden; 
+    flex-grow: 1;
+    max-width: 900px; 
+    width: 100%; 
+    
+    /* ADD VERTICAL PADDING HERE to allow space for the enlarged shadow */
+    padding: 30px 0; /* Add 30px to the top and bottom */
+    position: relative;
+}
+
+/* --- You may also need to slightly adjust the main section's padding --- */
+.category-carousel-section {
+    /* Keep existing styles, but this padding might need adjustment 
+       to align with the padding added to the wrapper. */
+    padding: 0 150px; /* Removed overall section padding to rely on wrapper padding */
+    margin: 40px auto; 
+    max-width: 1200px; 
+    position: relative;
+    overflow: hidden; 
+}
+
+/* The track holding ALL clickable links (the items) */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; 
+    align-items: center; 
+    flex-wrap: nowrap; 
+}
+
+/* --- ITEM SIZING & CENTER MODE EFFECT (Applied to the clickable link) --- */
+
+.category-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Makes the anchor tag take up the space */
+    text-align: center;
+    /* NEW: This sets the width to fit 3 items in the wrapper */
+    min-width: calc(100% / 3); 
+    padding: 15px 5px; /* Vertical padding and reduced horizontal padding */
+    flex-shrink: 0;
+    height: 100%;
+    /* Default smaller size for non-center items */
+    transform: scale(0.7); 
+    transition: transform 0.3s ease-in-out;
+    
+    /* Basic card styling moved to link background */
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+/* State for the center item (Applied by JavaScript to the .carousel-item inside the link) */
+/* The scaling is applied to the link for the transition */
+.category-link.is-center {
+    transform: scale(1.20); /* Make the center item 15% larger */
+    z-index: 10;
+    /* Optional: Add a subtle background/shadow to the center link for emphasis */
+    background-color: transparent;
+}
+
+
+.category-image-placeholder {
+    /* Adjusted for a more reasonable icon size in this type of carousel */
+    width: 350px; 
+    height: 100%; 
+    overflow-y: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.category-image-placeholder img {
+    max-width: 100%; 
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- NAVIGATION BUTTONS (Unchanged - they are correct) --- */
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #a93131;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px; 
+    height: 45px;
+    line-height: 45px;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 20; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.carousel-btn:hover {
+    background: #792323;
+}
+
+.prev-btn { left: 50px; }
+.next-btn { right: 50px; }
+
+/* --- Fade Effect on Left and Right Edges (Using Background: #fcfcfc) --- */
+
+/* 1. Ensure wrapper has the necessary positioning */
+.carousel-wrapper {
+    /* Keep all your existing positioning and padding styles */
+    position: relative; 
+    /* ... other styles ... */
+}
+
+/* Base styles for both fade overlays */
+.carousel-wrapper::before,
+.carousel-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10%; 
+    z-index: 15; 
+    pointer-events: none; 
+}
+
+/* LEFT FADE: Transparent to Opaque (from left to right) */
+
+
+body.dark-mode .carousel-wrapper::before,
+body.dark-mode .carousel-wrapper::after {
+    --dark-fade-color: #121212; /* Use your actual dark background color here */
+}
+
+/* LEFT FADE: Transparent to Opaque (Dark Mode) */
+body.dark-mode .carousel-wrapper::before {
+    background: linear-gradient(to right, 
+        /* Start fully opaque with the dark color */
+        var(--dark-fade-color) 0%, 
+        /* Fade to transparent using the dark color base */
+        rgba(18, 18, 18, 0) 100% 
+    ) !important; /* Use !important temporarily to ensure the override works */
+}
+
+/* RIGHT FADE: Opaque to Transparent (Dark Mode) */
+body.dark-mode .carousel-wrapper::after {
+    background: linear-gradient(to left, 
+        /* Start fully opaque with the dark color */
+        var(--dark-fade-color) 0%, 
+        /* Fade to transparent using the dark color base */
+        rgba(18, 18, 18, 0) 100% 
+    ) !important; /* Use !important temporarily to ensure the override works */
+}
+
+.carousel-wrapper::before {
+    left: 0;
+    /* Gradient starts with solid #fcfcfc and fades to transparent */
+    background: linear-gradient(to right, 
+        #fcfcfc 0%, /* Starts fully opaque, matching your background */
+        rgba(252, 252, 252, 0) 100% /* Ends fully transparent */
+    );
+}
+
+/* RIGHT FADE: Opaque to Transparent (from right to left) */
+.carousel-wrapper::after {
+    right: 0;
+    /* Gradient starts fully transparent and fades to solid #fcfcfc */
+    background: linear-gradient(to left, 
+        #fcfcfc 0%, /* Starts fully opaque at the right edge */
+        rgba(252, 252, 252, 0) 100% /* Ends fully transparent towards the center */
+    );
+}
+
+
+@media (max-width: 2500px) {
+    .hero-content {
+        max-width: 100%; /* Keep content contained to the left */
+        padding: 20px;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .hero-content {
+        max-width: 100%; /* Keep content contained to the left */
+        padding: 20px;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 924px) {
+    .hero-content {
+        max-width: 100%; /* Keep content contained to the left */
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    .hero-section {
+        padding: 30px 20px; 
+    }
+
+    .hero-description {
+        color: #f0f0f0;
+        line-height: 1.5;
+        margin-bottom: 25px;
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .product-listing-area, .featured-products-section{
+            background-color: #fff;
+            padding: 50px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 1600px;
+            min-width: 0;
+            width: 100%;
+        }
+
+        /* --- Category Header (Above the main content) --- */
+        .category-main-header {
+            margin: 30px auto 10px auto;
+            padding: 0 20px;
+        }
+
+        .category-page-container {
+            display: flex; /* Ensures sidebar and listing are side-by-side */
+            gap: 20px;     /* Space between the sidebar and product list */
+            align-items: flex-start; /* Ensures columns start at the top */
+            max-width: 100%;
+        }
+
+        /* --- 2. The Sticky Sidebar --- */
+        .filter-sidebar {
+            position: sticky; 
+            top: 70px; 
+            width: 250px; 
+            z-index: 10; 
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .back-link {
+            color: #a93131;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* --- Main Layout: Filter Sidebar & Product Results --- */
+        .category-page-container {
+            display: flex; /* Enables flexible layout */
+            max-width: 2000px;
+            margin: 20px ;
+
+        } 
+        .results-header {
+            /* Use Flexbox to align items horizontally */
+            display: flex;
+            /* Space out the product count and the sort dropdown */
+            justify-content: space-between;
+            /* Vertically align items in the middle */
+            align-items: center;
+            /* Add padding/margin around the container */
+            padding: 10px 0;
+            /* Optional: Add a subtle bottom border for separation */
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        /* --- 2. Product Count --- */
+        .product-count {
+            /* Slightly emphasize the count */
+            font-size: 0.95em;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* --- 3. Sorting Dropdown Wrapper --- */
+        .sort-by-dropdown {
+            display: flex;
+            align-items: center;
+            /* Ensure the label and select box have a small gap */
+            gap: 10px;
+        }
+
+        /* --- 4. Sort By Label --- */
+        .sort-by-dropdown label {
+            font-size: 0.9em;
+            color: #333;
+            font-weight: 400;
+        }
+
+        /* --- 5. Sort Dropdown (The Select Box) --- */
+        .sort-by-dropdown select {
+            /* Standardize size and padding */
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            /* Set a clean background */
+            background-color: #fff;
+            font-size: 0.9em;
+            /* Remove default browser outline */
+            outline: none;
+            /* Change border color on focus */
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+
+        .sort-by-dropdown select:focus {
+            border-color: #a93131;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+        }
+
+
+        .filter-sidebar h2 {
+            border-bottom: 1px solid #a9a9a9ff; 
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+
+        .filter-sidebar label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: normal;
+        }
+
+        .filter-sidebar input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .price-filter-group input[type="range"] {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        /* --- Target the slider input (Base) --- */
+        #price_slider {
+            /* Required to enable custom styling */
+            -webkit-appearance: none; 
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: transparent;
+            margin: 10px 0;
+        }
+
+        /* --- 1. Style the Thumb (Draggable Handle) --- */
+
+        /* Chrome, Safari, Edge, Opera (Webkit) */
+        #price_slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px; 
+            height: 18px;
+            background: #a93131; /* <--- NEW COLOR: BRIGHT RED */
+            cursor: pointer;
+            border-radius: 50%;
+            margin-top: -5px; 
+            border: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Firefox */
+        #price_slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #a93131; /* <--- NEW COLOR: BRIGHT RED */
+            cursor: pointer;
+            border-radius: 50%;
+            border: none; /* Override default Firefox border */
+        }
+
+        /* --- 2. Style the Track (Optional, but often needed for consistency) --- */
+        /* You may want the track to be a different color too. */
+
+        #price_slider::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, #6d2121ff, #ba3232ff);;
+            height: 8px;
+            border-radius: 4px;
+        }
+
+        #price_slider::-moz-range-track {
+            background: linear-gradient(to right, #b86433, #ffa53c);;
+            height: 8px;
+            border-radius: 4px;
+        }
+
+
+        .price-display-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+
+        .price-display-wrapper label {
+            width: auto;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        .price-display-wrapper input[type="number"] {
+            width: 80px;
+            padding: 5px;
+            border-radius: 4px;
+            text-align: right;
+            margin-left: 5px;
+        }
+
+        .max-price-limit {
+            margin-left: 10px;
+            color: #666;
+        }
+
+        .filter-group-brand  {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 5px 15px; 
+            padding-bottom: 20px !important;
+            margin-bottom: 0 !important;
+            border-bottom: 1px solid #a9a9a9ff; 
+        }
+
+        .filter-sidebar .filter-group-brand br {
+            display: none; 
+        }
+
+        .filter-group-brand .brand-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0 !important; 
+            font-size: 12px;
+        }
+
+        .filter-group {
+            margin-bottom: 10px;
+        }
+
+        .price-filter-group {
+            margin-bottom: 10px;
+            padding-bottom: 20px !important;
+            border-bottom: 1px solid #a9a9a9ff; 
+        }
+
+        .filter-sidebar .filter-group:nth-of-type(3) {
+            /* Ensure consistent padding and border separation */
+            padding: 15px 0;
+        }
+
+        .filter-sidebar select[name="min_rating"] {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-size: 1em;
+            background-color: #fafafa;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .filter-sidebar select[name="min_rating"] option {
+            padding: 5px;
+        }
+
+        .apply-filters-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #c96823ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .clear-all-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: white;
+            background-color: #a93131;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 4px;
+            width: 100%;
+            padding: 10px;
+        }

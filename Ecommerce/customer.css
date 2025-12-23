@@ -1,0 +1,145 @@
+/* General Body and Container Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    margin: 0;
+    padding: 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.auth-container {
+    background-color: #ffffff; /* White background for the form container */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    width: 100%;
+    max-width: 400px; /* Max width for the form container */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Form Titles */
+.auth-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700; /* Bolder font for title */
+}
+
+/* Form Groups (Label + Input) */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+.form-group label {
+    display: block; /* Make labels take full width */
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd; /* Lighter border */
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box; /* Important for consistent padding */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="text"]:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Soft glowing effect */
+    outline: none; /* Remove default outline */
+}
+
+/* Submit Button */
+.btn-submit {
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%; /* Full width button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px; /* Space above button */
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.btn-submit:active {
+    transform: translateY(0); /* Return to normal on click */
+}
+
+/* Toggle Form Link */
+.toggle-form-link {
+    display: block;
+    margin-top: 25px;
+    color: #007bff; /* Matches button color */
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.toggle-form-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Response Messages (Success/Error) */
+.response-message {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.response-message.success {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green text */
+    border: 1px solid #c3e6cb;
+}
+
+.response-message.error {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .auth-container {
+        margin: 10px;
+        padding: 25px;
+        box-shadow: none; /* Remove shadow on very small screens */
+        border-radius: 0; /* Remove border-radius on very small screens */
+    }
+}
+
+/* Header Public Adjustment: Ensure it doesn't interfere with the main content */
+/* If your header_public.php creates a fixed header, you might need to adjust body padding-top */
+/* For example, if your header is 60px tall: */
+/* body {
+    padding-top: 60px;
+} */
+/* Or ensure your header is positioned absolutely or fixed and doesn't push the content */

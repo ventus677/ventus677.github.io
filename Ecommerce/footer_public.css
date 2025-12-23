@@ -1,0 +1,683 @@
+/*
+ * COMPLETE, COMBINED, AND REVISED CSS CODE (FINAL VERSION)
+ * Includes: Footer, General Page Styles, About Page, Contact Page, Return Policy Page, at NEW Report Suspicious Styles
+ */
+
+/* --- Global Color Variables --- */
+:root {
+    /* Footer Colors (from original customer_footer.css) */
+    --footer-bg: #151515;         /* Dark/Blackish background */
+    --footer-text: #adb5bd;       /* Soft gray for main text */
+    --footer-link-hover: #ffffff; /* Pure white on hover */
+    --footer-highlight: #ffa53c;  /* Cyan/Teal highlight for emphasis (Beauty Accent Color) */
+    --border-color: #343a40;      /* Dark border separator */
+
+    /* Page Colors (New Premium Beauty Focus) */
+    --page-main-bg: #fcfcfc;      /* Very light, clean background */
+    --page-content-bg: #FFFFFF;   /* Pure white content box */
+    --page-text: #555;            /* Mid-gray for body text */
+    --page-heading: #333;         /* Dark gray for headings */
+    --value-box-bg: #f7f7f7;      /* Light gray box background for card items/cards */
+    --warning-color: #ffc107;     /* Amber/Yellow for warnings */
+}
+
+/* --- FOOTER STYLING --- */
+
+.site-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text); 
+    padding: 60px 20px 0; 
+    width: 100%;
+    margin-top: auto; 
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; 
+    padding-bottom: 40px; 
+    border-bottom: 1px solid var(--border-color); 
+}
+
+.footer-brand {
+    grid-column: span 1; 
+}
+
+.footer-logo {
+    color: var(--footer-link-hover); 
+    font-size: 1.6em; 
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    display: block;
+}
+
+.brand-tagline {
+    font-size: 0.9em;
+    color: var(--footer-text); 
+    margin-bottom: 25px;
+}
+
+.footer-section {
+    grid-column: span 1; 
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    color: var(--footer-link-hover); 
+    font-size: 1em; 
+    font-weight: 700; 
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.footer-section ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px; 
+}
+
+.footer-section ul li a {
+    color: var(--footer-text); 
+    font-size: 0.95em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block; 
+}
+
+.footer-section ul li a:hover {
+    color: var(--footer-highlight); 
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1em;
+    color: var(--footer-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icon i {
+    font-size: 1.2em; 
+    color: var(--footer-highlight); 
+}
+
+.social-icon:hover {
+    color: var(--footer-link-hover);
+}
+
+.social-icon:hover i {
+    color: var(--footer-link-hover);
+}
+
+.footer-bottom {
+    padding: 20px 0; 
+    text-align: center;
+    font-size: 0.8em;
+    color: var(--footer-text); 
+}
+.copyright-text i {
+    color: #dc3545; 
+    margin: 0 5px;
+}
+
+/* --- FOOTER RESPONSIVENESS --- */
+
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-brand {
+        grid-column: span 2; 
+    }
+    .footer-section {
+        grid-column: span 1; 
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+    .footer-brand, .footer-section {
+        grid-column: span 1; 
+    }
+    .social-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .social-icon {
+        padding-right: 20px;
+    }
+}
+
+/* --- GENERAL PAGE STYLING (About, Contact, Return, Report) --- */
+
+body {
+    background-color: var(--page-main-bg); 
+    font-family: 'Inter', sans-serif;
+}
+
+/* Page Container (The main content box) */
+.info-page-container {
+    max-width: 1100px; 
+    margin: 60px auto 100px auto;
+    padding: 40px;
+    background-color: var(--page-content-bg); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Main Heading */
+.info-page-container h2 {
+    font-family: 'Playfair Display', serif; 
+    font-size: 3.5em;
+    font-weight: 700;
+    color: var(--page-heading);
+    margin-bottom: 5px;
+    border-bottom: none; 
+    padding-bottom: 0;
+}
+
+/* Subtitle/Tagline */
+.page-subtitle {
+    display: block;
+    font-size: 1.1em;
+    color: var(--footer-highlight); 
+    font-weight: 500;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Paragraph Content */
+.info-page-container p {
+    font-size: 1em;
+    color: var(--page-text);
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+/* Sub-Headings (Our Mission, General Policy, etc.) */
+.info-page-container h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    font-weight: 500;
+    color: var(--page-heading);
+    margin-top: 60px;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Sub-Heading Underline/Separator */
+.info-page-container h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--footer-highlight);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* --- ABOUT PAGE SPECIFIC STYLING (Core Values Grid) --- */
+
+.about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.about-value-item {
+    flex: none; 
+    background: var(--value-box-bg); 
+    color: var(--page-heading);
+    border: 1px solid #eee;
+    padding: 35px 20px;
+    border-radius: 10px;
+    box-shadow: none;
+    transition: all 0.4s ease;
+}
+
+.about-value-item:hover {
+    box-shadow: 0 10px 25px rgba(0, 188, 212, 0.2); 
+    transform: translateY(-5px);
+    background-color: var(--page-content-bg);
+}
+
+.about-value-item i {
+    font-size: 4em;
+    color: var(--footer-highlight); 
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.about-value-item h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: var(--page-heading);
+    margin-bottom: 15px;
+}
+
+.about-value-item p {
+    font-size: 0.95em;
+    color: var(--page-text);
+    text-align: center;
+}
+
+/* --- CONTACT PAGE STYLING (Shared for Report Page Contact) --- */
+
+.contact-social-links-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-social-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 20px 30px;
+    border-radius: 8px;
+    background-color: var(--value-box-bg);
+    border: 1px solid #eee;
+    width: 45%; /* Default width for two-column layout */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.contact-social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.15); 
+    background-color: var(--page-content-bg);
+}
+
+.contact-social-link i {
+    font-size: 2em;
+    margin-right: 15px;
+    color: var(--footer-highlight); 
+    transition: color 0.3s ease;
+}
+
+.link-details {
+    text-align: left;
+}
+
+.link-details span {
+    display: block;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--page-heading);
+}
+
+.link-details small {
+    display: block;
+    font-size: 0.9em;
+    color: var(--page-text);
+    margin-top: 2px;
+}
+
+/* --- RETURN POLICY PAGE SPECIFIC STYLING --- */
+
+/* Clean up bullet points on General Policy Details */
+.policy-details-list {
+    list-style-type: none;
+    padding-left: 0;
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.policy-details-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    color: var(--page-text);
+    font-size: 1em;
+}
+
+.policy-details-list li::before {
+    content: "\f058"; /* Checkmark icon from Font Awesome */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--footer-highlight);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Return Steps Container (3 Step layout) */
+.return-steps-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 40px auto 60px auto;
+    max-width: 900px;
+}
+
+.return-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: var(--page-content-bg);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.return-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.1);
+}
+
+/* Step Icon Styling */
+.return-step i {
+    font-size: 3.5em;
+    color: var(--footer-highlight);
+    margin-bottom: 10px;
+}
+
+/* Step Number Badge (Added to PHP in previous step) */
+.return-step .step-number {
+    display: inline-block;
+    background-color: var(--footer-highlight);
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Step Title */
+.return-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--page-heading);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Step Description */
+.return-step p {
+    font-size: 0.95em;
+    color: var(--page-text);
+    text-align: center;
+    margin: 0;
+}
+
+.return-step p a {
+    color: var(--footer-highlight);
+    text-decoration: underline;
+}
+
+/* --- REPORT SUSPICIOUS PAGE SPECIFIC STYLING --- */
+
+.warning-non-suspicious {
+    font-size: 0.95em;
+    color: var(--warning-color); 
+    background-color: #fffde7;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--warning-color);
+    margin: 30px auto;
+}
+
+.warning-non-suspicious i {
+    margin-right: 10px;
+}
+
+.warning-non-suspicious a {
+    color: var(--footer-highlight);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* Report Card Grid */
+.report-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 40px auto 60px auto;
+    max-width: 900px;
+}
+
+.report-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 25px 20px;
+    background-color: var(--page-content-bg);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.report-card:hover {
+    border-color: var(--footer-highlight);
+    box-shadow: 0 6px 15px rgba(0, 188, 212, 0.1);
+}
+
+.report-card .card-title {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--page-heading);
+    margin-right: 15px;
+}
+
+.report-card i {
+    font-size: 1.2em;
+    color: var(--page-text);
+}
+
+/* --- RESPONSIVE ADJUSTMENTS (General) --- */
+
+@media (max-width: 992px) {
+    .about-values-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    /* Contact, Return, and Report pages stacked view */
+    .contact-social-links-container,
+    .return-steps-container,
+    .report-selection-grid {
+        flex-direction: column; 
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .contact-social-link,
+    .return-step {
+        width: 100%; 
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .info-page-container {
+        padding: 20px;
+        margin: 30px auto 60px auto;
+    }
+    .info-page-container h2 {
+        font-size: 2.5em;
+    }
+    .about-values-grid {
+        grid-template-columns: 1fr; 
+    }
+    .about-value-item {
+        padding: 30px 15px;
+    }
+}
+
+/* ========================================================= */
+/* --- DARK MODE STYLES (Para sa lahat ng page content) --- */
+/* ========================================================= */
+
+/* Palitan ang mga global variable sa dark mode */
+body.dark-mode {
+    --page-main-bg: #121212;      /* Very dark background */
+    --page-content-bg: #1e1e1e;   /* Darker content box */
+    --page-text: #adb5bd;         /* Soft gray for body text */
+    --page-heading: #e0e0e0;      /* Light gray for headings */
+    --value-box-bg: #2d2d2d;      /* Slightly lighter box background for cards */
+    --warning-color: #ffca28;     /* Lighter amber/yellow for warnings */
+    color: var(--page-text); /* Siguraduhin na ang base body text ay tama */
+}
+
+/* Page Container (Ang pangunahing content box) */
+body.dark-mode .info-page-container {
+    background-color: var(--page-content-bg); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Mas matingkad na shadow */
+}
+
+/* Heading at Subtitle */
+body.dark-mode .info-page-container h2,
+body.dark-mode .info-page-container h3 {
+    color: var(--page-heading);
+}
+
+body.dark-mode .page-subtitle {
+    /* Ang footer-highlight (Cyan/Teal) ay gumagana pa rin bilang accent */
+    color: var(--footer-highlight);
+}
+
+/* Paragraph Content */
+body.dark-mode .info-page-container p {
+    color: var(--page-text);
+}
+
+/* ABOUT PAGE SPECIFIC STYLING (Core Values Grid) */
+
+body.dark-mode .about-value-item {
+    background: var(--value-box-bg); 
+    color: var(--page-heading);
+    border: 1px solid #333;
+}
+
+body.dark-mode .about-value-item:hover {
+    box-shadow: 0 10px 25px rgba(0, 188, 212, 0.4); 
+    background-color: #333; /* Iba't ibang kulay sa hover */
+}
+
+body.dark-mode .about-value-item h4 {
+    color: var(--page-heading);
+}
+
+body.dark-mode .about-value-item p {
+    color: var(--page-text);
+}
+
+/* CONTACT PAGE STYLING */
+
+body.dark-mode .contact-social-link {
+    background-color: var(--value-box-bg);
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .contact-social-link:hover {
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3); 
+    background-color: #333;
+}
+
+body.dark-mode .link-details span {
+    color: var(--page-heading);
+}
+
+body.dark-mode .link-details small {
+    color: var(--page-text);
+}
+
+/* RETURN POLICY PAGE SPECIFIC STYLING */
+
+body.dark-mode .policy-details-list li {
+    color: var(--page-text);
+}
+
+body.dark-mode .return-step {
+    background-color: var(--page-content-bg);
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .return-step:hover {
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+}
+
+body.dark-mode .return-step h4 {
+    color: var(--page-heading);
+}
+
+/* REPORT SUSPICIOUS PAGE SPECIFIC STYLING */
+
+body.dark-mode .warning-non-suspicious {
+    color: var(--warning-color); 
+    background-color: #2d2d20; /* Darker yellow-ish background */
+    border-left: 5px solid var(--warning-color);
+}
+
+body.dark-mode .report-card {
+    background-color: var(--page-content-bg);
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .report-card:hover {
+    border-color: var(--footer-highlight);
+    box-shadow: 0 6px 15px rgba(0, 188, 212, 0.3);
+}
+
+body.dark-mode .report-card .card-title {
+    color: var(--page-heading);
+}
+
+body.dark-mode .report-card i {
+    color: var(--page-text);
+}

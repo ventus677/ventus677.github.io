@@ -1,0 +1,562 @@
+/* CSS Variables (Keep these for modern theming) */
+:root {
+    --sidebar-width: 250px;
+    --header-height: 70px;
+    --primary-brand: #e67e22; /* Orange from the image */
+    --accent-color: #f8f8f8; /* Light gray for sidebar/background */
+    --border-color: #ddd;
+    --input-bg: #fff;
+    --background-color: #f4f7f6;
+    --card-background: #ffffff;
+    --text-color: #212122ff;
+    --light-text: #7f8c8d;
+    --header-color: #151515;
+    --button-secondary: #f0f0f0;
+    --border-color: #ecf0f1;
+    --primary-color: #e67e22; 
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f6; /* Light gray background */
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: var(--header-height); /* Space for fixed header */
+    
+    /* Layout: Uses a column layout where one column (the sidebar) is fixed/set width */
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.profile-container {
+    /* Push content over to start after the fixed sidebar */
+    margin-left: 280px;
+    margin-right: 30px;
+    flex-grow: 1; 
+    max-width: 1590px; 
+    padding: 40px;
+    border-radius: 20px;
+    background-color: white; /* White background for the content card */
+    margin-top: 20px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Light shadow on content */
+}
+
+
+.profile-header h1 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    border-bottom: 4px solid var(--primary-color);
+    padding-bottom: 10px;
+    font-weight: 800;
+}
+
+/* 5. Content Wrapper (Enabling the floating Profile Picture) */
+.content-wrapper {
+    display: flex;
+    flex-direction: row; /* Content | Picture area */
+    gap: 30px;
+    width: 100%;
+    align-items: start;
+}
+
+/* 6. Form Inputs Area (The left, single-column main form) */
+.form-inputs-area {
+    flex-grow: 1;
+    width: 100%; /* Allocate more space for the form inputs */
+    max-width: 1000px;
+}
+.profile-form-group {
+    margin-bottom: 15px;
+}
+.profile-form label {
+    font-weight: normal; /* Less emphasis than before */
+    color: var(--text-color);
+}
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form input[type="password"],
+.profile-form input[type="tel"],
+.profile-form textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    background-color: var(--input-bg);
+    width: 100%; /* Important for alignment */
+    box-sizing: border-box;
+}
+
+/* 7. Profile Picture Area (The right, floating section) */
+.profile-picture-sidebar {
+    width: 100%; /* Allocate less space for the picture area */
+    text-align: center;
+    padding-top: 50px;
+}
+
+.profile-picture-container {
+    width: 1600px; /* Increased from 120px */
+    height: 1600px; /* Increased from 120px */
+    margin: 0 auto 15px auto;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-picture-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-picture-sidebar small {
+    display: block;
+    margin-top: 10px;
+    color: #999;
+    font-size: 0.85em;
+}
+
+/* 8. Separated Form Sections (e.g., Change Password) */
+.section-separator {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 30px 0;
+}
+
+/* 9. Button Styling */
+.btn-primary { 
+    background-color: var(--primary-brand); /* Orange */
+    color: white; 
+    padding: 10px 25px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-secondary {
+    background-color: var(--button-secondary);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+.btn-secondary i {
+    margin-right: 5px;
+}
+
+/* --- Responsiveness (Crucial for Sidebar) --- */
+@media (max-width: 900px) {
+    /* When screen is small, stack the picture area below the form */
+    .content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .profile-picture-sidebar {
+        order: -1; /* Place picture above the form inputs when stacked */
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hide the fixed sidebar and adjust main content margin */
+    
+    .profile-container {
+        margin-left: 0; /* Remove sidebar offset */
+        padding: 20px;
+    }
+}
+
+
+    .profile-header {
+    margin-bottom: 30px;
+    width: 100%;
+    grid-column: 1 / span 2; 
+    text-align: center;
+    font-weight: bold;
+}
+
+.profile-header h1, .profile-header h2 {
+    color: #151515; /* Darker blue-gray */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.profile-header p {
+    color: #2c2c2c; /* Muted gray */
+    font-size: 1.1em;
+    margin-bottom: 20px;
+} */
+
+.response-message {
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(10px);
+    max-width: 90%;
+    display: none; /* Hidden by default via JS */
+    width: fit-content; /* Adjust width to content */
+}
+
+.response-message.show {
+    opacity: 1;
+    transform: translateY(0);
+    display: block; /* Use block to show it */
+}
+
+.response-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.response-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.response-message.info {
+    background-color: #cfe2ff;
+    color: #055160;
+    border: 1px solid #b6d4fe;
+}
+
+/* Profile Picture */
+.profile-picture-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #ffa53c; /* A vibrant blue border */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+    cursor: pointer; /* Indicate it's clickable */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+/* Forms */
+.profile-form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.profile-form-group { /* Added for better grouping of labels/inputs */
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #373a3d; /* Slightly darker than text */
+    font-size: 0.95em;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form input[type="password"],
+.profile-form input[type="tel"], /* Added for phone number */
+.profile-form textarea, /* Added for address */
+.profile-form select {
+    width: 900px;
+    padding: 12px 15px;
+    border: 1px solid #e0e6ed; /* Lighter border */
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-form input[type="text"]:focus,
+.profile-form input[type="email"]:focus,
+.profile-form input[type="password"]:focus,
+.profile-form input[type="tel"]:focus, /* Added for phone number */
+.profile-form textarea:focus, /* Added for address */
+.profile-form select:focus {
+    border-color: #ffa53c;
+    outline: none;
+}
+
+.profile-form input[type="file"] {
+    display: none; /* Hidden, triggered by overlay click */
+}
+
+.profile-form small {
+    display: block;
+    margin-top: 5px;
+    color: #7f8c8d;
+    font-size: 0.85em;
+}
+
+/* Buttons */
+.profile-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.profile-buttons button, .btn-primary { /* Unified button style */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex; /* For icon alignment */
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background-color: #ffa53c; /* Green for primary actions */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #b86433;
+    transform: translateY(-2px);
+}
+.btn-secondary { /* For Cancel or Verify buttons if needed */
+    background-color: #95a5a6; /* Gray for secondary actions */
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* Horizontal Rule */
+hr {
+    width: 100%;
+    margin: 40px 0;
+    border: 0;
+    border-top: 1px solid #ecf0f1; /* Lighter divider */
+}
+
+/* Cropper Modal Styles */
+.modal {
+    display: flex; /* Changed to flex for centering */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden; /* Use visibility for smoother hiding */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal.show-modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    width: 90%;
+    max-width: 650px;
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+.modal.show-modal .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    color: #aaa;
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.close-button:hover,
+.close-button:focus {
+    color: #555;
+}
+
+.img-container {
+    width: 100%;
+    height: 750px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+.img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.crop-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+/* Make crop buttons consistent with general button styles */
+.crop-buttons button {
+        background-color: #ffa53c; /* Blue for action */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+}
+
+#cancelCropBtn { /* Specific style for cancel button */
+    background-color: #a93131; /* Red for cancel */
+}
+#cancelCropBtn:hover {
+    background-color: #a93131;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .profile-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile-buttons button, .btn-primary {
+        width: 100%;
+        max-width: 250px; /* Limit button width on smaller screens */
+    }
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    .img-container {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 15px;
+    }
+    .profile-header h1 {
+        font-size: 1.8em;
+    }
+    .profile-header p {
+        font-size: 0.9em;
+    }
+    .response-message {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
+
+/* ======================================= */
+/* DARK MODE STYLES              */
+/* ======================================= */
+
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+}
+body.dark-mode .profile-container {
+    background-color: #1e1e1e; /* Darker container background */
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05); /* Lighter shadow */
+}
+body.dark-mode .profile-header h1, 
+body.dark-mode .profile-header h2 {
+    color: #ffffff; /* White headers */
+}
+
+body.dark-mode .profile-header p {
+    color: #a0a0a0; /* Lighter muted gray */
+}
+
+/* Dark Mode Messages */
+body.dark-mode .response-message.success {
+    background-color: #1c4d29; /* Dark success background */
+    color: #d4edda; /* Light success text */
+    border: 1px solid #1c4d29;
+}
+body.dark-mode .response-message.error {
+    background-color: #5d2528; /* Dark error background */
+    color: #f8d7da; /* Light error text */
+    border: 1px solid #5d2528;
+}
+body.dark-mode .response-message.info {
+    background-color: #292a2a; /* Dark info background */
+    color: #cfe2ff; /* Light info text */
+    border: 1px solid #ffa53c;
+}
+
+/* Dark Mode Profile Picture Container */
+body.dark-mode .profile-picture-container {
+    border-color: #ffa53c; 
+}
+
+/* Dark Mode Forms */
+body.dark-mode .profile-form label {
+    color: #e0e0e0; /* Light label text */
+}
+body.dark-mode .profile-form input[type="text"],
+body.dark-mode .profile-form input[type="email"],
+body.dark-mode .profile-form input[type="password"],
+body.dark-mode .profile-form input[type="tel"],
+body.dark-mode .profile-form textarea,
+body.dark-mode .profile-form select {
+    background-color: #333; /* Dark input background */
+    color: #e0e0e0; /* Light input text */
+    border: 1px solid #444; 
+}
+
+body.dark-mode .profile-form input:focus,
+body.dark-mode .profile-form textarea:focus,
+body.dark-mode .profile-form select:focus {
+    border-color: #b86433;
+}
+
+body.dark-mode .profile-form small {
+    color: #a0a0a0;
+}
+
+body.dark-mode hr {
+    border-top: 1px solid #333; /* Darker divider */
+}
+
+/* Dark Mode Modal Styles */
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+}
+body.dark-mode .close-button {
+    color: #bbb;
+}
+body.dark-mode .img-container {
+    background-color: #333;
+}
